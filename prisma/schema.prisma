@@ -8,8 +8,26 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Example {
+model User {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  email         String   @unique
+  name          String?
+  image         String?
+  paymentMethod String?
+  charges       Charge[]
+}
+
+model Charge {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  amount    Int
+  currency  String
+  source    String
+  dueDate   DateTime
+  status    String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
 }

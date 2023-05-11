@@ -1,12 +1,11 @@
-import { SignInButton, SignOutButton, useUser } from "@clerk/clerk-react";
+import { SignInButton, useAuth } from "@clerk/clerk-react";
 import { type NextPage } from "next";
 import Head from "next/head";
 import { Dropdown } from "~/components/dropdown";
 import { Button } from "~/components/ui/button";
 
 const Home: NextPage = () => {
-
-  const user = useUser();
+  const user = useAuth();
 
   return (
     <>
@@ -33,7 +32,6 @@ const Home: NextPage = () => {
                 </div>
               )
             }
-
           </div>
         )
         }

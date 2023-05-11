@@ -40,7 +40,7 @@ import { SignOutButton } from "@clerk/clerk-react"
         <DropdownMenuTrigger asChild>
           <Button className="absolute top-8 right-8 text-white" variant="outline"><MenuIcon></MenuIcon></Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56 absolute right-1 text-white">
+        <DropdownMenuContent className="w-56 absolute right-1 text-white backdrop-blur-xl backdrop-brightness-50">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>

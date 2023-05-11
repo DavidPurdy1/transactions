@@ -1,6 +1,7 @@
-import { SignIn, SignInButton, useUser } from "@clerk/clerk-react";
+import { SignInButton, SignOutButton, useUser } from "@clerk/clerk-react";
 import { type NextPage } from "next";
 import Head from "next/head";
+import { Dropdown } from "~/components/dropdown";
 
 const Home: NextPage = () => {
 
@@ -14,11 +15,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-        <div >
-          {user.isSignedIn && (
+        <div>
+          {user.isSignedIn ? (
+            <div className="flex justify-center items-center flex-col text-center">
+              <h1 className="my-5 text-5xl font-bold text-white">Welcome to Transactions!</h1>
+              <DropdownMenu />
+             
+              <SignOutButton />
+            </div>
+          ) : (
             <div>
-              <h1 className="text-white">Welcome to your app!</h1>
-              <p className="text-white">You are signed in!</p>
+              <SignInButton />
             </div>
           )
           }

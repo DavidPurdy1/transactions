@@ -13,9 +13,11 @@ import {
     User,
     UserPlus,
     Users,
+    MenuIcon
   } from "lucide-react"
   
   import { Button } from "~/components/ui/button"
+  import Link from "next/link"
   import {
     DropdownMenu,
     DropdownMenuContent,
@@ -30,21 +32,24 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
   } from "~/components/ui/dropdown-menu"
+import { SignOutButton } from "@clerk/clerk-react"
   
   export function Dropdown() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline">Open</Button>
+          <Button className="absolute top-8 right-8 text-white" variant="outline"><MenuIcon></MenuIcon></Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
+        <DropdownMenuContent className="w-56 absolute right-1 text-white">
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
-              <span>Profile</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            <DropdownMenuItem asChild>
+              <Button variant="ghost" className="w-full" asChild>
+                  <Link href="/user">
+                    <User className="mr-2 h-4 w-4" />Profile
+                  </Link>
+                </Button>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <CreditCard className="mr-2 h-4 w-4" />
@@ -111,10 +116,14 @@ import {
             <span>API</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          <DropdownMenuItem asChild>
+              <Button variant="ghost" className="w-full" asChild>
+                    <SignOutButton>
+                    <span>
+                      <LogOut className="mr-2 h-4 w-4" />Log Out
+                      </span>
+                    </SignOutButton>
+              </Button>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
